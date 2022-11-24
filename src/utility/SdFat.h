@@ -41,17 +41,17 @@ class SdVolume;
 // SdFile class
 
 #ifdef O_RDONLY //ARDUINO_ARCH_MBED
-  #undef O_READ
-  #undef O_RDONLY
-  #undef O_WRITE
-  #undef O_WRONLY
-  #undef O_RDWR
-  #undef O_ACCMODE
-  #undef O_APPEND
-  #undef O_SYNC
-  #undef O_CREAT
-  #undef O_EXCL
-  #undef O_TRUNC
+#undef O_READ
+#undef O_RDONLY
+#undef O_WRITE
+#undef O_WRONLY
+#undef O_RDWR
+#undef O_ACCMODE
+#undef O_APPEND
+#undef O_SYNC
+#undef O_CREAT
+#undef O_EXCL
+#undef O_TRUNC
 #endif
 
 // flags for ls()
@@ -255,6 +255,7 @@ class SdFile : public Print {
       return type_ == FAT_FILE_TYPE_ROOT16 || type_ == FAT_FILE_TYPE_ROOT32;
     }
     void ls(uint8_t flags = 0, uint8_t indent = 0);
+    void ls(uint8_t flags, uint8_t indent, HardwareSerial *port);   // Custom overload --> without default parameters
     uint8_t makeDir(SdFile* dir, const char* dirName);
     uint8_t open(SdFile* dirFile, uint16_t index, uint8_t oflag);
     uint8_t open(SdFile* dirFile, const char* fileName, uint8_t oflag);
